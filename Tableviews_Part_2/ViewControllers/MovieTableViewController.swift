@@ -7,6 +7,8 @@
 
 import UIKit
 
+let movieViewTypes = ["MovieTableViewCell", "MovieTableViewCell2", "MovieTableViewCell3"]
+
 class MovieTableViewController: UITableViewController {
     enum Century: Int { case twentieth, twentyFirst }
     enum Genre: Int {
@@ -14,15 +16,16 @@ class MovieTableViewController: UITableViewController {
         case action
         case drama
     }
-  
+    
     internal var movieData: [Movie]?
-
+    
     internal let rawMovieData: [[String : Any]] = movies
-    let cellIdentifier: String = "MovieTableViewCell"
+    
+    let cellIdentifier = movieViewTypes[2]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.title = "Movies"
         // 1. need to update our table for self-sizing cells
         
@@ -33,19 +36,51 @@ class MovieTableViewController: UITableViewController {
             movieContainer.append(Movie(from: rawMovie))
         }
         movieData = movieContainer
+        
+        
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 200.0
+        
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        //self.navigationController!
+        
         // 1. update our nav controller's tints and font
+        if let navigationController: UINavigationController = self.navigationController {
+            navigationController.navigationBar.tintColor = .white
+            navigationController.navigationBar.barTintColor = UIColor.reelGoodGreen
+            navigationController.navigationBar.titleTextAttributes = [
+                NSForegroundColorAttributeName : UIColor.white,
+                NSFontAttributeName: UIFont.systemFont(ofSize: 24.0)
+            ]
+        }
+        
+        
+        
         
         // 2. add a new bar button
+        //        let menuBarButton: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "reel"),
+        //                                                             style: .plain,
+        //                                                             target: nil,
+        //                                                             action: nil)
+        //        self.navigationItem.setLeftBarButton(menuBarButton, animated: false)
+        //
+        
+        
         
     }
-
+    
+    func handleBar() {
+        
+    }
+    
+    @IBOutlet weak var barButtonReel: UIBarButtonItem!
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
@@ -63,7 +98,29 @@ class MovieTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
         guard let genre = Genre.init(rawValue: indexPath.section),
             let data = byGenre(genre) else {
-            return cell
+                return cell
+        }
+        
+        if let movieCell: MovieTableViewCell = cell as? MovieTableViewCell {
+            movieCell.movieTitleLabel.text = data[indexPath.row].title
+            movieCell.movieSummaryLabel.text = data[indexPath.row].summary
+            movieCell.moviePosterImageView.image = UIImage(named: data[indexPath.row].poster)
+            
+            if cellIdentifier == "MovieTableViewCell2" {
+                movieCell.movieYearLabel.text = String(data[indexPath.row].year)
+                movieCell.greenBar.backgroundColor = UIColor.reelGoodGreen
+            }
+            
+            if cellIdentifier == "MovieTableViewCell3" {
+                movieCell.movieCastLabel.text = ""
+                for actor in data[indexPath.row].cast {
+                    movieCell.movieCastLabel.text!.append("\(actor.firstName) \(actor.lastName)\n\n")
+                }
+                movieCell.greenContainer.backgroundColor = UIColor.reelGoodGreen
+
+            }
+            
+            return movieCell
         }
         
         // update to use a custom cell subclass
