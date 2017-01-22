@@ -18,10 +18,14 @@ class MovieTableViewController: UITableViewController {
     }
     
     internal var movieData: [Movie]?
-    
     internal let rawMovieData: [[String : Any]] = movies
     
-    let cellIdentifier = movieViewTypes[0]
+    var cellToDisplay = 0
+    var cellIdentifier: String {
+        get {
+            return movieViewTypes[cellToDisplay]
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,16 +59,25 @@ class MovieTableViewController: UITableViewController {
             ]
         }
         
-//         2. add a new bar button
-                let menuBarButton: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "reel"),
-                                                                     style: .plain,
-                                                                     target: nil,
-                                                                     action: nil)
-                self.navigationItem.setLeftBarButton(menuBarButton, animated: false)
+        // 2. add a new bar button
+        let menuBarButton: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "reel"),
+                                                             style: .plain,
+                                                             target: self,
+                                                             action: #selector(menuBarButtonPressed))
+        self.navigationItem.setLeftBarButton(menuBarButton, animated: false)
+    }
+    
+    func menuBarButtonPressed() {
+        switch self.cellToDisplay {
+        case 2:
+            self.cellToDisplay = 0
+        default:
+            self.cellToDisplay += 1
+        }
+        self.tableView.reloadData()
     }
     
     func handleBar() {
-        
     }
     
     // MARK: - Table view data source
@@ -105,17 +118,10 @@ class MovieTableViewController: UITableViewController {
                     movieCell.movieCastLabel.text!.append("\(actor.firstName) \(actor.lastName)\n\n")
                 }
                 movieCell.greenContainer.backgroundColor = UIColor.reelGoodGreen
-
+                
             }
-            
             return movieCell
         }
-        
-        // update to use a custom cell subclass
-        
-//        cell.textLabel?.text = data[indexPath.row].title
-//        cell.detailTextLabel?.text = String(data[indexPath.row].year)
-        
         return cell
     }
     
@@ -123,7 +129,6 @@ class MovieTableViewController: UITableViewController {
         guard let genre = Genre.init(rawValue: section) else {
             return ""
         }
-        
         switch genre {
         case .action:
             return "Action"
@@ -147,10 +152,8 @@ class MovieTableViewController: UITableViewController {
                 a.year >= 2001
             }
         }
-        
         // after filtering, sort
         let filtered = movieData?.filter(filter).sorted { $0.year < $1.year }
-        
         return filtered
     }
     
@@ -170,10 +173,8 @@ class MovieTableViewController: UITableViewController {
                 a.genre == "drama"
             }
         }
-        
         // after filtering, sort
         let filtered = movieData?.filter(filter).sorted { $0.year < $1.year }
-        
         return filtered
     }
 }
