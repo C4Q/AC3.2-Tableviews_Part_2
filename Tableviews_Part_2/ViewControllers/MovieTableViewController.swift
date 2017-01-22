@@ -21,13 +21,15 @@ class MovieTableViewController: UITableViewController {
     
     internal let rawMovieData: [[String : Any]] = movies
     
-    let cellIdentifier = movieViewTypes[2]
+    let cellIdentifier = movieViewTypes[0]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = "Movies"
         // 1. need to update our table for self-sizing cells
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 200.0
         
         // converting from array of dictionaries
         // to an array of Movie structs
@@ -36,11 +38,6 @@ class MovieTableViewController: UITableViewController {
             movieContainer.append(Movie(from: rawMovie))
         }
         movieData = movieContainer
-        
-        
-        self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.estimatedRowHeight = 200.0
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,26 +55,17 @@ class MovieTableViewController: UITableViewController {
             ]
         }
         
-        
-        
-        
-        // 2. add a new bar button
-        //        let menuBarButton: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "reel"),
-        //                                                             style: .plain,
-        //                                                             target: nil,
-        //                                                             action: nil)
-        //        self.navigationItem.setLeftBarButton(menuBarButton, animated: false)
-        //
-        
-        
-        
+//         2. add a new bar button
+                let menuBarButton: UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "reel"),
+                                                                     style: .plain,
+                                                                     target: nil,
+                                                                     action: nil)
+                self.navigationItem.setLeftBarButton(menuBarButton, animated: false)
     }
     
     func handleBar() {
         
     }
-    
-    @IBOutlet weak var barButtonReel: UIBarButtonItem!
     
     // MARK: - Table view data source
     
@@ -125,8 +113,8 @@ class MovieTableViewController: UITableViewController {
         
         // update to use a custom cell subclass
         
-        cell.textLabel?.text = data[indexPath.row].title
-        cell.detailTextLabel?.text = String(data[indexPath.row].year)
+//        cell.textLabel?.text = data[indexPath.row].title
+//        cell.detailTextLabel?.text = String(data[indexPath.row].year)
         
         return cell
     }
