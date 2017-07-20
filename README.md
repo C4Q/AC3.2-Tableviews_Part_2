@@ -56,7 +56,7 @@ After talking over the changes with Reel Good, you get together with your develo
 
 You'll notice that if you run the project right after cloning it, it will look a little different than where we left off in part 1. Seems as though while we were sleeping, some of our overseas partner developers made some changes. So we're going to get the app into a new working spec before we begin.
 
-> Image of initial
+<img src="./Images/initial_state_tableview.png" width="400" alt="Starting where Part 1 Leaves off">
 
 Right now, we have just a list of `Movie` objects being displayed in a single section. What we want, however, is to group movies by their genre. We know `Movie` has a `genre` property, so we're going to do our best to sort on that (alphabetically). Sorting comes in two flavors for comparable elements: *ascending* and *descending*.
 
@@ -168,7 +168,6 @@ In `viewDidLoad` update the value of `self.movieData` such that the array itself
 The type of the elements in the closure changes based on the elements in the array you're sorting. Meaning, <code>a, b</code> are not <code>Int</code>
 <br><br>
 </details>
-<br>
 
 <br>
 <details><summary>Hint 2</summary>
@@ -176,7 +175,6 @@ The type of the elements in the closure changes based on the elements in the arr
 You wont be able to do something like <code>Movie > Movie</code>,  but you can use its property of <code>genre</code>
 <br><br>
 </details>
-<br>
 
 <br>
 <details><summary>Hint 3</summary>
@@ -184,19 +182,20 @@ You wont be able to do something like <code>Movie > Movie</code>,  but you can u
 If your sorting ends up descending, it's fine. That ends up being an easy, single operator fix.
 <br><br>
 </details>
-<br>
 
 <br>
 <details><summary>Answer</summary>
 <br><br>
 <code>
-    self.movieData = self.movieData.sorted(by: { (a: Movie, b: Movie) -> Bool in
-      return a.genre > b.genre ? false : true
+    self.movieData = self.movieData.sorted(by: { (a: Movie, b: Movie) -> Bool in <br>
+      return a.genre > b.genre ? false : true <br>
     })
 </code>
 <br><br>
 </details>
 <br>
+
+<img src="./Images/sorted_on_genre.png" width="400" alt="Movies sorted on Genre">
 
 ---
 
@@ -221,31 +220,38 @@ When attempting to using self-sizing `UITableviewCells` there is are a few criti
 
 ### 2. Customizing `UITableviewCell` in Storyboard
 
-1. Go into storyboard and select the protoype cell
-2. Open the *Utilities Area* and select the *Attributes Inspector*
-3. Switch "Style" to "Custom" (note that the prototype cell in the storyboard changes)
+1. Create a new `UITableViewCell` subclass by going to File > New > File... and selecting `Cocoa Touch Class`
+  - Have this subclass from `UITableViewCell` and name the new class `MovieTableViewCell`
+  - *If you'd like to be thorough: before saving, create a new Folder called "Views" to create the file in. Then right-click the `MovieTableViewCell.swift` file and select "New Group from Selection" and name the new group "Views"*
+2. Go into storyboard, select the protoype cell, switch "Style" to "Custom" (note that the prototype cell in the storyboard changes) and switch its class type to `MovieTableViewCell` in the "Identity Inspector" in the Utilities pane.
+  - ![Subclassing the New Prototype cell](./Images/subclassing_movie_cell.png)
+3. Open the *Utilities Area* and select the *Attributes Inspector*
 4. Switch to the *Size Inspector* in the *Utilities Area* and give the `MovieTableViewCell` a custom row height of 200pt to give us a little room to work with (note: this will only be 200pts in the storyboard, and at runtime, our autolayout guides will expand/shrink as needed)
+  - ![Adjusting the cell height](./Images/custom_cell_height.png)
 5. From the *Object Library*, drag over a `UIImageView` into the `contentView` of the cell
+  - ![Locating an Imageview](./Images/filtering_for_Image_view.png)
 6. Align the `UIImageView` to the left side of the cell, such that the alignment lines show up on the top, left, and bottom sides of the imageview.
+  - ![Aligning using guides](./Images/aligning_imageview_in_storyboard.png)
 7. Select the imageView, click on the *Align* button, and select "Vertically in Container" and switch "Update Frames" to "All Frames in Container"
   - This will ensure that the imageView will be aligned vertically in the content view (sets imageView.centerY `NSLayoutAttribute` to contentView.centerY)
   - Changing the "Update Frames" option makes sure that the storyboard updates the UI to match these changes. If you don't do this, you could have the proper constraints in place, but Xcode will warn you that the constraints you've applied don't match what's being seen in storyboard.
+  - ![Alignment in Y-axis](./Images/aligning_vertical_in_container.png)
 8. Next, with the imageView still selected, click on the *Pin* button and add the following:
   - 8pt margin to top, left and bottom
   - Width of 120, Height of 180
-  - ![Image View Constraints (Pin)](http://i.imgur.com/kkXu28e.png)
+  - ![Image View Constraints (Pin)](./Images/pinning_image_edges.png)
 9. Its possible that the storyboard hasn't updated its views to match the constraints you've set, so you may need to click on *Resolve Autolayout Issues* and select "Update Frames".
   - When selecting this, Xcode will look at the constraints you've set and try to update the storyboard elements to match their constraints. If you've done everything right up until this point, you should no longer see any warnings or errors in storyboard
   - *Some Advice: Using the storyboard can be quite frustrationg at times. I would highly recommend that if you make an error somewhere along the line, to just select the problematic view, click on "Clear Constraints" and just start over. It's very difficult, especially when starting out, to resolve layout issues when you have many existing (and potentially) conflicting constraints in place. Once you've become a little experienced with it, you can try to resolve them on your own. But for now, you may find that just clearing the constraints is ultimately faster.*
-  - ![ImageView aligned in IB](http://i.imgur.com/hGQYUOWm.png)
+  - ![ImageView aligned in IB](./Images/image_all_constraints_shown.png)
 10. Now, add a `UILabel` to the right of the `UIImageView` with the following constraints:
-  - ![Movie Title Label Constraints](http://i.imgur.com/OuVP6udm.png)
+  - ![Movie Title Label Constraints](./Images/movie_title_constraints.png)
   - 8pts from top, left, right
   - 17pt font
   - Left aligned
   - Name it: Movie Title Label
 11. Add a second UILabel below the first:
-  - ![Movie Summary Label Constraints](http://i.imgur.com/ShAqN2am.png)
+  - ![Movie Summary Label Constraints](./Images/movie_summary_constraints.png)
   - 8pts from the top, left, right and bottom
   - Number of lines = 0
   - Justified alignment
@@ -253,7 +259,7 @@ When attempting to using self-sizing `UITableviewCells` there is are a few criti
   - 12pt font, Gray color (any)
 12. You may now notice an error about `verticalHuggingPriority` and `verticalCompressionResistence`... let's take a look at these two properties for a moment
 
-![CHCR Warnings](http://i.imgur.com/Y33xLMNm.png)
+![CHCR Warnings](./Images/hugging_errors.png)
 
 #### Content Hugging/Compression Resistance ([CHCR](https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/AutolayoutPG/WorkingwithConstraintsinInterfaceBuidler.html#//apple_ref/doc/uid/TP40010853-CH10-SW2))
 These aren't the easiest concepts to understand, and I think in large part is due to their naming. But thanks to one very perfectly succinct [StackOverflow answer](http://stackoverflow.com/a/16281229/3833368), it's a bit easier:
@@ -267,26 +273,41 @@ Meaning:
 
 *Note:* These values are set *relative* to the views that surround it. Meaning, these properties will only matter in cases where constraints do not define an exact width/height for a view, and rather, expect a view to expand/contract based on the sizes of the views around it.
 
-#### Fixing the CHCR Errors
-In our case, we want the movie title `UILabel` to keep a consistent size, both in width and height. The movie summary `UILabel`, however, should expand vertically as much as needed to accomodate all of the movie's text. So conceptually, the *content hugging* of the movie title label's width and height should be high, but the *content compression resistance* of the movie summary label should be low (to let it grow) vertically. With this in mind, let's update our views...
+#### Exercise: Fixing the CHCR Errors
 
-*hint: You really only need to change one of the labels's content hugging for the errors to resolve*
+In our case, we want the movie title `UILabel` to keep a consistent size, both in width and height. The movie summary `UILabel`, however, should expand **vertically** as much as needed to accomodate all of the movie's text, but stay pinned to the left, top and right. So conceptually, the *content hugging* of the movie title label's width and height should be high, but the *content compression resistance* of the movie summary label should be low (to let it grow) vertically. With this in mind, let's update our views...
+
+<br>
+<details><summary>Hint 1</summary>
+<br><br>
+You really only need to change one of the labels's content hugging for the errors to resolve
+<br><br>
+</details>
+<br>
+
+<details><summary>Answer</summary>
+<br><br>
+Make the <code>vertical content hugging</code> priority of the <code>movieSummaryLabel</code> any value less than the
+<code>movieTitleLabel</code>'s  <code>vertical content hugging</code>
+<img src="./Images/smaller_hugging_vertical.png" width="200" alt="Smaller hugging priority on the element allowed to shrink">
+<br><br>
+</details>
+<br>
 
 ---
 ### 3. Linking Storyboard Elements to a custom `UITableViewCell`
 With our prototype cell's constraints completed, now its necessary to link it up so our project uses the new prototype.
 
-1. Create a new `UITableViewCell` subclass by going to File > New > File... and selecting `Cocoa Touch Class`
-  - Have this subclass from `UITableViewCell` and name the new class `MovieTableViewCell`
-  - *If you'd like to be thorough: before saving, create a new Folder called "Views" to create the file in. Then right-click the `MovieTableViewCell.swift` file and select "New Group from Selection" and name the new group "Views"*
-2. Open `Main.storyboard` selecting the prototype cell, and switch its class type to `MovieTableViewCell` in the "Identity Inspector" in the Utilities pane.
-3. However is most comfortable (typing and/or ctrl+dragging), add three `IBOutlet`s to `MovieTableViewCell` and make sure they are linked to your prototype cell. Name the elements `movieTitleLabel`, `movieSummaryLabel`, and `moviePosterImageView`
+However is most comfortable (typing and/or ctrl+dragging), add three `IBOutlet`s to `MovieTableViewCell` and make sure they are linked to your prototype cell. Name the elements `movieTitleLabel`, `movieSummaryLabel`, and `moviePosterImageView`
 
 ```swift
     @IBOutlet weak var movieTitleLabel: UILabel!
     @IBOutlet weak var movieSummaryLabel: UILabel!
     @IBOutlet weak var moviePosterImageView: UIImageView!
 ```
+![Linking code to storyboard](./Images/linking_ui_to_code_for_cell.png)
+
+>>> TODO UPDATE THIS STALE CODE
 
 Next, we'll need to update our code in our `MovieTableViewController`'s `cellForRow` delegate function:
 
