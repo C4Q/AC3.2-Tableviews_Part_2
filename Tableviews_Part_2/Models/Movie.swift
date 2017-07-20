@@ -15,14 +15,16 @@ class Movie {
 	var cast: [String]
 	var locations: [String]
 	var summary: String
+	var poster: String
 	
-	init(title: String, year: Int, genre: String, cast: [String], locations: [String], summary: String) {
+	init(title: String, year: Int, genre: String, cast: [String], locations: [String], summary: String, poster: String) {
 		self.title = title
 		self.year = year
 		self.genre = genre
 		self.cast = cast
 		self.locations = locations
 		self.summary = summary
+		self.poster = poster
 	}
 	
 	convenience init(from dict: [String : Any]) {
@@ -31,9 +33,10 @@ class Movie {
 			let movieGenre = dict["genre"] as? String,
 			let movieCast = dict["cast"] as? [String],
 			let movieLocations = dict["locations"] as? [String],
-			let movieSummary = dict["description"] as? String {
+			let movieSummary = dict["description"] as? String,
+			let moviePoster = dict["poster"] as? String {
 			
-			self.init(title: movieTitle, year: movieYear, genre: movieGenre, cast: movieCast, locations: movieLocations, summary: movieSummary)
+			self.init(title: movieTitle, year: movieYear, genre: movieGenre, cast: movieCast, locations: movieLocations, summary: movieSummary, poster: moviePoster)
 		}
 		else {
 			self.init()
@@ -47,5 +50,6 @@ class Movie {
 		self.cast = []
 		self.locations = []
 		self.summary = ""
+		self.poster = ""
 	}
 }

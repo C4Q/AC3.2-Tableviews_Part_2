@@ -52,7 +52,7 @@ After talking over the changes with Reel Good, you get together with your develo
 4. If we have time to add in Reel Good's font, we'll need to understand how to add keys to our project's `Info.plist`
 
 ---
-### 2. Warm Up Exercises with Enums
+### 2. Warm Up Exercises, Sorting
 
 You'll notice that if you run the project right after cloning it, it will look a little different than where we left off in part 1. Seems as though while we were sleeping, some of our overseas partner developers made some changes. So we're going to get the app into a new working spec before we begin.
 
@@ -307,21 +307,54 @@ However is most comfortable (typing and/or ctrl+dragging), add three `IBOutlet`s
 ```
 ![Linking code to storyboard](./Images/linking_ui_to_code_for_cell.png)
 
->>> TODO UPDATE THIS STALE CODE
+With the addition of this `UIImageView`, it's a good time to mention that in addition to all of the changes made by that overseas developer they added images for each of the movies! Additionally, each movie in `Data.swift` now has an additional key/value pair, `poster` corresponding to the name of the image bundled with the project. Go ahead and take a look at both `Data.swift` and `Assets.xcassets` to verify.
 
-Next, we'll need to update our code in our `MovieTableViewController`'s `cellForRow` delegate function:
-
+> Note: We need to adjust our code in `viewDidLoad` because the developer didn't notice we added two `Movie` objects. Simply replace
 ```swift
-  // just below our guard statement
-  if let movieCell: MovieTableViewCell = cell as? MovieTableViewCell {
-    movieCell.movieTitleLabel.text = data[indexPath.row].title
-    movieCell.movieSummaryLabel.text = data[indexPath.row].summary
-    movieCell.moviePosterImageView.image = UIImage(named: data[indexPath.row].poster)
-    return movieCell
-  }
+self.movieData = [
+      Movie(title: "Rogue One", year: 2016, genre: "sci-fi", cast: [], locations: ["Space"], summary: "An awesome Star Wars movie"),
+      Movie(title: "Wonder Woman", year: 2017, genre: "superhero", cast: [], locations: ["Europe"], summary: "Wonder Woman fights evil, and wins.")
+]
+```
+with
+```swift
+self.movieData = []
 ```
 
+To adjust for these changes, update your `Movie`'s three `init` functions to include the next property, `var poster: String`.
+
+Next, we'll need to update our code in our `MovieTableViewController`'s `cellForRow` function:
+
+```swift
+override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    // 1.
+    let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+    let cellMovie = self.movieData[indexPath.row]
+
+    // 2.
+    if let movieCell: MovieTableViewCell = cell as? MovieTableViewCell {
+
+      // 3.
+      movieCell.movieTitleLabel.text = cellMovie.title + " - (\(cellMovie.genre))"
+      movieCell.movieSummaryLabel.text = cellMovie.summary
+      movieCell.moviePosterImageView.image = UIImage(named: cellMovie.poster)
+    }
+
+    // 4.
+    return cell
+}
+```
+
+1. This part is the same: we still want to `dequeue` a cell based on a `cellIdentifier`, and we still want to get the movie at a particular index to display
+2. We need to do a conditional bind to check if the `cell` that's dequeued with our given identifier is of a specific type, `MovieTableViewCell`. By default, `dequeueReusableCell(withIdentifier:for:)` returns `UITableViewCell`. So we must ensure that the `cell` can in fact be cast into `MovieTableViewCell`.
+3. Because we've defined and set up the UI elements of the `MovieTableViewCell`, we know which values of the `Movie` should be given to each element.
+4. At this point, we've set up the `cell` and just have to return it.
+
 Great! Now let's run and see our new cell in action
+
+<img src="./Images/movie_cells_squished.png" width="400" alt="Not enough space for the cells!">
+<br>
+<img src="./Images/broken_cell_constraints.png" width="500" alt="Broken constraints in console">
 
 Oh, something's wrong... remember before I mentioned that there are a few critial things you need to do in order to get self-sizing cells with autolayout? Well, constraining everything relative the the `contentView` is one, but there are two more:
 
@@ -336,15 +369,51 @@ So add the following to `viewDidLoad`, just before we parse our `Movie` data obj
 ```
 And now re-run the project. Much better right?
 
-Depending on the iPhone model your simulation is running on, you probably notice a problem with the summary text: it's being cut off! While it's true that our summary text label will expand as needed for text, there are two constraints that are holding the cell at a specific height. See if you can figure out which two those are.
-
-![Text cutting off](http://i.imgur.com/02ppw9Wm.png)
-
-*Hint/Reminder: The height of the cell is determined by a single, unbroken chain of constraints that describe the vertical relationships of the views. Think about what is giving our cell it's height (it's not those two tableview properties we just set, FYI)*
-
-![Text fix](http://i.imgur.com/DI6EKPYl.png)
+<img src="./Images/auto_sized_movie_cells.png" width="400" alt="Correctly sized... mostly">
 
 ---
+
+### 4. Exercises
+
+Depending on the iPhone model your simulation is running on, you probably notice a problem with the summary text: it's being cut off! While it's true that our summary text label will expand as needed for text, there are two constraints that are holding the cell at a specific height. See if you can figure out which two those are.
+
+<img src="./Images/auto_sized_movie_cells_trailing_summary.png" width="400" alt="Truncated text">
+
+<br>
+<details><summary>Hint 1</summary>
+<br><br>
+The height of the cell is determined by a single, unbroken chain of constraints that describe the vertical relationships of the views.
+<br><br>
+</details>
+
+<br>
+<details><summary>Hint 2</summary>
+<br><br>
+Think about what is giving our cell it's height (it's not those two tableview properties we just set, FYI)*
+<br><br>
+</details>
+<br>
+
+<br>
+<details><summary>Hint 3</summary>
+<br><br>
+Anything with a pre-set height or width, can prevent autoresizing like this.
+<br><br>
+</details>
+<br>
+
+<img src="./Images/auto_sized_movie_cells_no_truncate.png" width="400" alt="No more truncation on summary labels">
+
+---
+
+
+> TODO ...
+1. Move these styling changes to the third part?
+2. Re-add section sorting w/ enums for exercises
+
+
+
+
 
 ### 4. Extensions and Navigation Item Style Changes
 In brief, an Extension allows you to give more functionality to an existing class without having to change that class's file. This is pretty useful if you want to add some new property or function to an existing class - even a built-in Apple class, or a 3rd party library's. A lot of times developers will extend an existing Foundation class to do some task that they need to do repeatedly in their app, but don't need to create an entire class to do.
@@ -395,6 +464,15 @@ You save a little bit of code, but the potential savings isn't immediately obvio
 
 Extensions can be extremely useful and more flexible that creating your own class or set of functions. They can also be clear in their intent so long as you name them well.
 
+
+
+
+
+
+
+
+
+
 #### Adding a simple `UIColor` extension
 Since we know that Reel Good is going to want to use their official brand colors in a lot of places in their app, it makes sense to think ahead and try to save yourself some time with typing. It's really not a big deal to set a UI element's background color, here and there (`view.backgroundColor = UIColor.green`, `label.textColor = UIColor.purple`, etc..). But as programmers, we strive for modularity, re-usability, and maintainability. Here's what I mean:
 
@@ -424,6 +502,8 @@ We're going to add the associated code to update the navBar inside of `UIViewCon
 
 #### Adding a `UIBarButtonItem` to the `UINavigationBar`
 This is fairly straightforward, with the trickiest part being sizing the image you're going to use to fit your navBar properly. In this case, the project includes an icon that's already sized at about 60pt for its @2x size.
+
+
 
 ---
 ### 5. (Extra) Adding Custom Fonts
