@@ -7,57 +7,45 @@
 
 import Foundation
 
-internal struct Movie {
-    
-    internal var title: String
-    internal var year: Int
-    internal var genre: String
-    internal var cast: [Actor]
-    internal var locations: [String]
-    internal var summary: String
-    
-    init(from data: [String : Any]) {
-        
-        if let movieTitle: String = data["name"] as? String,
-            let movieYear: Int = data["year"] as? Int,
-            let movieGenre: String = data["genre"] as? String,
-            let movieLocations: [String] = data["locations"] as? [String],
-            let movieSynopsis: String = data["description"] as? String
-            // 1. we'll need to update our model to include the "poster" key
-        {
-            
-            self.title = movieTitle
-            self.year = movieYear
-            self.genre = movieGenre
-            self.locations = movieLocations
-            self.summary = movieSynopsis
-            
-            if let allActorNames: [String] = data["cast"] as? [String] {
-                var castContainer: [Actor] = []
-                
-                for actorName in allActorNames {
-                    castContainer.append(Actor(from: actorName))
-                    
-                }
-                
-                self.cast = castContainer
-            }
-            else {
-                self.cast = []
-            }
-        }
-
-        else {
-            self = Movie()
-        }
-    }
-    
-    init() {
-        self.title = ""
-        self.year = 1970
-        self.genre = ""
-        self.cast = []
-        self.locations = []
-        self.summary = ""
-    }
- }
+class Movie {
+	
+	var title: String
+	var year: Int
+	var genre: String
+	var cast: [String]
+	var locations: [String]
+	var summary: String
+	
+	init(title: String, year: Int, genre: String, cast: [String], locations: [String], summary: String) {
+		self.title = title
+		self.year = year
+		self.genre = genre
+		self.cast = cast
+		self.locations = locations
+		self.summary = summary
+	}
+	
+	convenience init(from dict: [String : Any]) {
+		if let movieTitle = dict["name"] as? String,
+			let movieYear = dict["year"] as? Int,
+			let movieGenre = dict["genre"] as? String,
+			let movieCast = dict["cast"] as? [String],
+			let movieLocations = dict["locations"] as? [String],
+			let movieSummary = dict["description"] as? String {
+			
+			self.init(title: movieTitle, year: movieYear, genre: movieGenre, cast: movieCast, locations: movieLocations, summary: movieSummary)
+		}
+		else {
+			self.init()
+		}
+	}
+	
+	init() {
+		self.title = ""
+		self.year = 1970
+		self.genre = ""
+		self.cast = []
+		self.locations = []
+		self.summary = ""
+	}
+}
