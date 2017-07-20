@@ -189,11 +189,11 @@ If your sorting ends up descending, it's fine. That ends up being an easy, singl
 <br>
 <details><summary>Answer</summary>
 <br><br>
-```swift
+<code>
     self.movieData = self.movieData.sorted(by: { (a: Movie, b: Movie) -> Bool in
       return a.genre > b.genre ? false : true
     })
-```
+</code>
 <br><br>
 </details>
 <br>
