@@ -229,7 +229,7 @@ When attempting to using self-sizing `UITableviewCells` there is are a few criti
 4. Switch to the *Size Inspector* in the *Utilities Area* and give the `MovieTableViewCell` a custom row height of 200pt to give us a little room to work with (note: this will only be 200pts in the storyboard, and at runtime, our autolayout guides will expand/shrink as needed)
   - ![Adjusting the cell height](./Images/custom_cell_height.png)
 5. From the *Object Library*, drag over a `UIImageView` into the `contentView` of the cell
-  - ![Locating an Imageview](./Images/filtering_for_Image_view.png)
+  - ![Locating an Imageview](./Images/filtering_for_image_view.png)
 6. Align the `UIImageView` to the left side of the cell, such that the alignment lines show up on the top, left, and bottom sides of the imageview.
   - ![Aligning using guides](./Images/aligning_imageview_in_storyboard.png)
 7. Select the imageView, click on the *Align* button, and select "Vertically in Container" and switch "Update Frames" to "All Frames in Container"
