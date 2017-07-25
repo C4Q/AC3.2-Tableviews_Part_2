@@ -22,6 +22,7 @@
 		140665661D98C1B100363EE8 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 140665621D98C1B100363EE8 /* Roboto-Light.ttf */; };
 		140665671D98C1B100363EE8 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 140665631D98C1B100363EE8 /* Roboto-Regular.ttf */; };
 		140665691D98C1BB00363EE8 /* ReelGoodColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140665681D98C1BB00363EE8 /* ReelGoodColors.swift */; };
+		141FDF4E1F279164007F951F /* MovieRightAlignedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141FDF4D1F279164007F951F /* MovieRightAlignedTableViewCell.swift */; };
 		1499D1F61F212028003E5F5A /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1499D1F51F212028003E5F5A /* MovieTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,7 @@
 		140665621D98C1B100363EE8 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Light.ttf"; path = "Tableviews_Part_2/Roboto-Light.ttf"; sourceTree = SOURCE_ROOT; };
 		140665631D98C1B100363EE8 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Regular.ttf"; path = "Tableviews_Part_2/Roboto-Regular.ttf"; sourceTree = SOURCE_ROOT; };
 		140665681D98C1BB00363EE8 /* ReelGoodColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReelGoodColors.swift; path = Tableviews_Part_2/ReelGoodColors.swift; sourceTree = SOURCE_ROOT; };
+		141FDF4D1F279164007F951F /* MovieRightAlignedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieRightAlignedTableViewCell.swift; path = Tableviews_Part_2/MovieRightAlignedTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		142842C91D920F3C007A1182 /* Tableviews_Part_2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tableviews_Part_2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		142842DD1D920F3C007A1182 /* Tableviews_Part_2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tableviews_Part_2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1499D1F51F212028003E5F5A /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = SOURCE_ROOT; };
@@ -80,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				1499D1F51F212028003E5F5A /* MovieTableViewCell.swift */,
+				141FDF4D1F279164007F951F /* MovieRightAlignedTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -214,7 +217,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = C4Q;
 				TargetAttributes = {
 					142842C81D920F3C007A1182 = {
@@ -278,6 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				140665141D987A8D00363EE8 /* Actor.swift in Sources */,
+				141FDF4E1F279164007F951F /* MovieRightAlignedTableViewCell.swift in Sources */,
 				1406655F1D98C10D00363EE8 /* ReelGoodFonts.swift in Sources */,
 				140665691D98C1BB00363EE8 /* ReelGoodColors.swift in Sources */,
 				1406650F1D987A7A00363EE8 /* AppDelegate.swift in Sources */,
@@ -344,6 +348,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -393,6 +398,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -422,6 +428,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/Tableviews_Part_2/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "nyc.AccessCode.Tableviews-Part-2";
@@ -436,6 +443,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/Tableviews_Part_2/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "nyc.AccessCode.Tableviews-Part-2";

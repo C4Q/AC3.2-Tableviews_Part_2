@@ -394,7 +394,6 @@ Think about what is giving our cell it's height (it's not those two tableview pr
 </details>
 <br>
 
-<br>
 <details><summary>Hint 3</summary>
 <br><br>
 Anything with a pre-set height or width, can prevent autoresizing like this.
@@ -404,7 +403,29 @@ Anything with a pre-set height or width, can prevent autoresizing like this.
 
 <img src="./Images/auto_sized_movie_cells_no_truncate.png" width="400" alt="No more truncation on summary labels">
 
+
+#### Styling of Cells
+
+We're going to practice creating new custom cells, but we'll start simple. Your task is to
+
+1. Create a new prototype cell in storyboard
+2. Create a new `UITableViewCell` subclass called `MovieRightAlignedTableViewCell`
+3. Make the new cell exactly like `MovieTableViewCell`, except that the image is now right-aligned
+4. You table should display movies in alternating cell types (meaning, left-aligned, right-aligned, left-aligned,.. etc.)
+
+Your finished product should look something like this:
+
+<img src="./Images/alternating_cells.png" width="400">
+
+
 ---
+
+
+
+
+
+
+
 
 
 > TODO ...

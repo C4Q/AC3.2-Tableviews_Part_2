@@ -10,6 +10,7 @@ import UIKit
 class MovieTableViewController: UITableViewController {
 	var movieData: [Movie]!
 	let cellIdentifier: String = "MovieTableViewCell"
+	let cellIdentifierRightAligned: String = "MovieRightAlignedTableViewCell"
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -42,13 +43,19 @@ class MovieTableViewController: UITableViewController {
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		
-		let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+		let identifier = indexPath.row % 2 == 0 ? cellIdentifier : cellIdentifierRightAligned
+		let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
 		let cellMovie = self.movieData[indexPath.row]
-
-		if let movieCell: MovieTableViewCell = cell as? MovieTableViewCell {
+		
+		if let movieCell = cell as? MovieTableViewCell {
 			movieCell.movieTitleLabel.text = cellMovie.title + " - (\(cellMovie.genre))"
 			movieCell.movieSummaryLabel.text = cellMovie.summary
 			movieCell.moviePosterImageView.image = UIImage(named: cellMovie.poster)
+		}
+		else if let movieRightCell = cell as? MovieRightAlignedTableViewCell {
+			movieRightCell.movieTitleLabel.text = cellMovie.title + " - (\(cellMovie.genre))"
+			movieRightCell.movieSummaryLabel.text = cellMovie.summary
+			movieRightCell.moviePosterImageView.image = UIImage(named: cellMovie.poster)
 		}
 		
 		return cell
