@@ -36,34 +36,16 @@ class MovieTableViewController: UITableViewController {
 		
 		self.tableView.rowHeight = UITableViewAutomaticDimension
 		self.tableView.estimatedRowHeight = 200.0
-		
-//		if let navigationController: UINavigationController = self.navigationController {
-//			navigationController.navigationBar.tintColor = UIColor.white
-//			navigationController.navigationBar.barTintColor = reelGoodGreen
-//			navigationController.navigationBar.titleTextAttributes = [
-//				NSForegroundColorAttributeName : UIColor.white
-//			]
-//		}
 	}
 	
 	
 	// MARK: - Table view data source
 	override func numberOfSections(in tableView: UITableView) -> Int {
-		return 1//		return 3
+		return 1
 	}
 	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return self.movieData.count
-		
-		//		if section == 0 {
-//			return self.filterMovies(for: .action).count
-//		}
-//		else if section == 1 {
-//			return self.filterMovies(for: .animation).count
-//		}
-//		else {
-//			return self.filterMovies(for: .drama).count
-//		}
 	}
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -72,18 +54,6 @@ class MovieTableViewController: UITableViewController {
 		let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
 		
 		let cellMovie: Movie = movieData[indexPath.row]
-//		if indexPath.section == 0 {
-//			let actionMovies = self.filterMovies(for: .action)
-//			cellMovie = actionMovies[indexPath.row]
-//		}
-//		else if indexPath.section == 1 {
-//			let animatedMovies = self.filterMovies(for: .animation)
-//			cellMovie = animatedMovies[indexPath.row]
-//		}
-//		else {
-//			let dramaticMovies = self.filterMovies(for: .drama)
-//			cellMovie = dramaticMovies[indexPath.row]
-//		}
 
 		if let movieCell = cell as? MovieTableViewCell {
 			movieCell.movieTitleLabel.text = cellMovie.title + " - (\(cellMovie.genre))"
@@ -98,28 +68,4 @@ class MovieTableViewController: UITableViewController {
 		
 		return cell
 	}
-	
-//	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//		if section == 0 {
-//			return "Action"
-//		}
-//		else if section == 1 {
-//			return "Animation"
-//		}
-//		else {
-//			return "Drama"
-//		}
-//	}
-	
-//	func filterMovies(for type: MovieType) -> [Movie] {
-//		var returnMovies: [Movie] = []
-//
-//		switch type {
-//		case .action: returnMovies = movieData.filter{ $0.genre == "action" }
-//		case .animation: returnMovies = movieData.filter{ $0.genre == "animation" }
-//		case .drama: returnMovies = movieData.filter{ $0.genre == "drama" }
-//		}
-//
-//		return returnMovies
-//	}
 }
