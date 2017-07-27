@@ -20,8 +20,6 @@
 		140665651D98C1B100363EE8 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 140665611D98C1B100363EE8 /* Roboto-Bold.ttf */; };
 		140665661D98C1B100363EE8 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 140665621D98C1B100363EE8 /* Roboto-Light.ttf */; };
 		140665671D98C1B100363EE8 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 140665631D98C1B100363EE8 /* Roboto-Regular.ttf */; };
-		141FDF4E1F279164007F951F /* MovieRightAlignedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141FDF4D1F279164007F951F /* MovieRightAlignedTableViewCell.swift */; };
-		1499D1F61F212028003E5F5A /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1499D1F51F212028003E5F5A /* MovieTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,10 +48,8 @@
 		140665611D98C1B100363EE8 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Bold.ttf"; path = "Tableviews_Part_2/Roboto-Bold.ttf"; sourceTree = SOURCE_ROOT; };
 		140665621D98C1B100363EE8 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Light.ttf"; path = "Tableviews_Part_2/Roboto-Light.ttf"; sourceTree = SOURCE_ROOT; };
 		140665631D98C1B100363EE8 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Regular.ttf"; path = "Tableviews_Part_2/Roboto-Regular.ttf"; sourceTree = SOURCE_ROOT; };
-		141FDF4D1F279164007F951F /* MovieRightAlignedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieRightAlignedTableViewCell.swift; path = Tableviews_Part_2/MovieRightAlignedTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		142842C91D920F3C007A1182 /* Tableviews_Part_2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tableviews_Part_2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		142842DD1D920F3C007A1182 /* Tableviews_Part_2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tableviews_Part_2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1499D1F51F212028003E5F5A /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,8 +73,6 @@
 		140665251D98AB0100363EE8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				1499D1F51F212028003E5F5A /* MovieTableViewCell.swift */,
-				141FDF4D1F279164007F951F /* MovieRightAlignedTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -275,11 +269,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				140665141D987A8D00363EE8 /* Actor.swift in Sources */,
-				141FDF4E1F279164007F951F /* MovieRightAlignedTableViewCell.swift in Sources */,
 				1406650F1D987A7A00363EE8 /* AppDelegate.swift in Sources */,
 				140665181D987A9600363EE8 /* MovieTableViewController.swift in Sources */,
 				140665151D987A8D00363EE8 /* Data.swift in Sources */,
-				1499D1F61F212028003E5F5A /* MovieTableViewCell.swift in Sources */,
 				140665161D987A8D00363EE8 /* Movie.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

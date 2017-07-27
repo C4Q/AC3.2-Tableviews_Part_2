@@ -14,28 +14,15 @@ enum MovieType {
 class MovieTableViewController: UITableViewController {
 	var movieData: [Movie]!
 	let cellIdentifier: String = "MovieTableViewCell"
-	let cellIdentifierRightAligned: String = "MovieRightAlignedTableViewCell"
-	
-	let reelGoodGreen: UIColor = UIColor(red: 109.0/255.0, green: 199.0/255.0, blue: 39.0/255.0, alpha: 1.0)
-	let reelGoodGray: UIColor = UIColor(red: 85.0/255.0, green: 85.0/255.0, blue: 85.0/255.0, alpha: 1.0)
-	
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		self.title = "Movies"
-		
 		self.movieData = []
-		
 		for i in movies {
 			self.movieData.append(Movie(from: i))
 		}
-		
-		self.movieData = self.movieData.sorted(by: { (a: Movie, b: Movie) -> Bool in
-			return a.genre > b.genre ? false : true
-		})
-		
-		self.tableView.rowHeight = UITableViewAutomaticDimension
-		self.tableView.estimatedRowHeight = 200.0
 	}
 	
 	
@@ -49,23 +36,11 @@ class MovieTableViewController: UITableViewController {
 	}
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		
-		let identifier = indexPath.row % 2 == 0 ? cellIdentifier : cellIdentifierRightAligned
-		let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
-		
+		let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
 		let cellMovie: Movie = movieData[indexPath.row]
-
-		if let movieCell = cell as? MovieTableViewCell {
-			movieCell.movieTitleLabel.text = cellMovie.title + " - (\(cellMovie.genre))"
-			movieCell.movieSummaryLabel.text = cellMovie.summary
-			movieCell.moviePosterImageView.image = UIImage(named: cellMovie.poster)
-		}
-		else if let movieRightCell = cell as? MovieRightAlignedTableViewCell {
-			movieRightCell.movieTitleLabel.text = cellMovie.title + " - (\(cellMovie.genre))"
-			movieRightCell.movieSummaryLabel.text = cellMovie.summary
-			movieRightCell.moviePosterImageView.image = UIImage(named: cellMovie.poster)
-		}
 		
+		cell.textLabel?.text = "\(cellMovie.title) - \(cellMovie.year)"
+		cell.detailTextLabel?.text = cellMovie.summary
 		return cell
 	}
 }
