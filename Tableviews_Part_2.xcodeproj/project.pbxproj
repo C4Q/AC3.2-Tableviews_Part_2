@@ -16,12 +16,10 @@
 		1406651F1D987AAE00363EE8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1406651B1D987AAE00363EE8 /* LaunchScreen.storyboard */; };
 		140665201D987AAE00363EE8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1406651D1D987AAE00363EE8 /* Main.storyboard */; };
 		140665211D987AC900363EE8 /* Tableviews_Part_2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1406650A1D987A6900363EE8 /* Tableviews_Part_2Tests.swift */; };
-		1406655F1D98C10D00363EE8 /* ReelGoodFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1406655E1D98C10D00363EE8 /* ReelGoodFonts.swift */; };
 		140665641D98C1B100363EE8 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 140665601D98C1B100363EE8 /* Roboto-Black.ttf */; };
 		140665651D98C1B100363EE8 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 140665611D98C1B100363EE8 /* Roboto-Bold.ttf */; };
 		140665661D98C1B100363EE8 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 140665621D98C1B100363EE8 /* Roboto-Light.ttf */; };
 		140665671D98C1B100363EE8 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 140665631D98C1B100363EE8 /* Roboto-Regular.ttf */; };
-		140665691D98C1BB00363EE8 /* ReelGoodColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140665681D98C1BB00363EE8 /* ReelGoodColors.swift */; };
 		141FDF4E1F279164007F951F /* MovieRightAlignedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141FDF4D1F279164007F951F /* MovieRightAlignedTableViewCell.swift */; };
 		1499D1F61F212028003E5F5A /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1499D1F51F212028003E5F5A /* MovieTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -48,12 +46,10 @@
 		140665191D987AA700363EE8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Tableviews_Part_2/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		1406651C1D987AAE00363EE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Tableviews_Part_2/Base.lproj/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
 		1406651E1D987AAE00363EE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Tableviews_Part_2/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
-		1406655E1D98C10D00363EE8 /* ReelGoodFonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReelGoodFonts.swift; path = Tableviews_Part_2/ReelGoodFonts.swift; sourceTree = SOURCE_ROOT; };
 		140665601D98C1B100363EE8 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Black.ttf"; path = "Tableviews_Part_2/Roboto-Black.ttf"; sourceTree = SOURCE_ROOT; };
 		140665611D98C1B100363EE8 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Bold.ttf"; path = "Tableviews_Part_2/Roboto-Bold.ttf"; sourceTree = SOURCE_ROOT; };
 		140665621D98C1B100363EE8 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Light.ttf"; path = "Tableviews_Part_2/Roboto-Light.ttf"; sourceTree = SOURCE_ROOT; };
 		140665631D98C1B100363EE8 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Regular.ttf"; path = "Tableviews_Part_2/Roboto-Regular.ttf"; sourceTree = SOURCE_ROOT; };
-		140665681D98C1BB00363EE8 /* ReelGoodColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReelGoodColors.swift; path = Tableviews_Part_2/ReelGoodColors.swift; sourceTree = SOURCE_ROOT; };
 		141FDF4D1F279164007F951F /* MovieRightAlignedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MovieRightAlignedTableViewCell.swift; path = Tableviews_Part_2/MovieRightAlignedTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		142842C91D920F3C007A1182 /* Tableviews_Part_2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tableviews_Part_2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		142842DD1D920F3C007A1182 /* Tableviews_Part_2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tableviews_Part_2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,8 +139,6 @@
 		142842EE1D920FBA007A1182 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				140665681D98C1BB00363EE8 /* ReelGoodColors.swift */,
-				1406655E1D98C10D00363EE8 /* ReelGoodFonts.swift */,
 				1406655D1D98B7B800363EE8 /* Fonts */,
 				1406651B1D987AAE00363EE8 /* LaunchScreen.storyboard */,
 				1406651D1D987AAE00363EE8 /* Main.storyboard */,
@@ -166,8 +160,8 @@
 			isa = PBXGroup;
 			children = (
 				140665111D987A8D00363EE8 /* Actor.swift */,
-				140665121D987A8D00363EE8 /* Data.swift */,
 				140665131D987A8D00363EE8 /* Movie.swift */,
+				140665121D987A8D00363EE8 /* Data.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -282,8 +276,6 @@
 			files = (
 				140665141D987A8D00363EE8 /* Actor.swift in Sources */,
 				141FDF4E1F279164007F951F /* MovieRightAlignedTableViewCell.swift in Sources */,
-				1406655F1D98C10D00363EE8 /* ReelGoodFonts.swift in Sources */,
-				140665691D98C1BB00363EE8 /* ReelGoodColors.swift in Sources */,
 				1406650F1D987A7A00363EE8 /* AppDelegate.swift in Sources */,
 				140665181D987A9600363EE8 /* MovieTableViewController.swift in Sources */,
 				140665151D987A8D00363EE8 /* Data.swift in Sources */,

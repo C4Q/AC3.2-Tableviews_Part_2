@@ -1,6 +1,7 @@
 //
 //  Movie.swift
-//  Tableviews_Part_2//
+//  Tableviews_Part_1
+//
 //  Created by Louis Tur on 9/20/16.
 //  Copyright © 2016 C4Q. All rights reserved.
 //
@@ -12,7 +13,7 @@ class Movie {
 	var title: String
 	var year: Int
 	var genre: String
-	var cast: [String]
+	var cast: [Actor]
 	var locations: [String]
 	var summary: String
 	var poster: String
@@ -21,7 +22,7 @@ class Movie {
 		self.title = title
 		self.year = year
 		self.genre = genre
-		self.cast = cast
+		self.cast = cast.map { Actor(from: $0) }
 		self.locations = locations
 		self.summary = summary
 		self.poster = poster
@@ -53,3 +54,4 @@ class Movie {
 		self.poster = ""
 	}
 }
+

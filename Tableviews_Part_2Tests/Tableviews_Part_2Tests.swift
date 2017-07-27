@@ -17,6 +17,7 @@ class Tableviews_Part_2Tests: XCTestCase {
             "genre": "drama",
             "cast": ["Jennifer Lawrence", "Josh Hutcherson", "Liam Hemsworth"],
             "locations": ["New York", "Wisconsin"],
+            "poster" : "hunger_games_small",
             "description": "Katniss Everdeen voluntarily takes her younger sister\'s place in the Hunger Games"
         ],
         [
@@ -25,6 +26,7 @@ class Tableviews_Part_2Tests: XCTestCase {
             "genre": "drama",
             "cast": ["Bradley Cooper", "Sienna Miller", "Kyle Gallner"],
             "locations": ["Los Angeles", "Detroit", "Morocco"],
+            "poster" : "american_sniper_small",
             "description": "Navy S.E.A.L. sniper Chris Kyle\'s pinpoint accuracy saves countless lives"
         ]
     ]

@@ -25,7 +25,6 @@
 1. Create customized, self-sizing `UITableViewCell` using IB **(Interface Builder)**
 2. Understanding *"minimally satisfying constraints"* in AutoLayout
 3. Learning basics of iOS Design
-4. Creating a simple `Extension` of a Foundation class
 5. (Extra) Modifying a projects `.plist` to use custom fonts
 
 
